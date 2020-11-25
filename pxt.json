@@ -2,7 +2,8 @@
     "name": "a mario ripoff",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "color-coded-tilemap": "*"
     },
     "files": [
         "main.blocks",
@@ -15,7 +16,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.2.9",
+        "target": "1.2.10",
         "targetId": "arcade"
     },
     "supportedTargets": [

@@ -1,84 +1,139 @@
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile3, function (sprite, location) {
-    music.pewPew.playUntilDone()
-    music.pewPew.playUntilDone()
-    music.pewPew.playUntilDone()
-})
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile4, function (sprite, location) {
-    tiles.setTileAt(tiles.getTileLocation(0, 0), myTiles.tile4)
-    music.baDing.playUntilDone()
-})
+namespace SpriteKind {
+    export const pl8 = SpriteKind.create()
+    export const jely = SpriteKind.create()
+}
+function level () {
+    scene.setTileMap(img`
+        ..............................
+        ..............................
+        ..............................
+        ..............................
+        ..............................
+        ..............................
+        ..............................
+        ..............5..55555........
+        ..............5...............
+        ..............5........555...5
+        .............55..........5555.
+        .............5................
+        .............5................
+        .............555..............
+        .............5..5.............
+        ............5....5............
+        ............5....55...........
+        ...........5......5...........
+        ...........5......55..........
+        ..........5........55.........
+        .........55.........55........
+        ........55....................
+        .......55....................5
+        ......55...........55555555555
+        .....55.55....................
+        .....5...55...................
+        ....55....................8...
+        ...5..........................
+        222222222222222222222222222222
+        222222222222222222222222222222
+        `)
+    for (let value of scene.getTilesByType(8)) {
+        scene.setTile(8, img`
+            . . . . d d d d d . . . . . . . 
+            . d d d 5 5 5 5 5 d d d . . . . 
+            d 5 5 5 5 5 5 5 5 5 5 5 d . . . 
+            d 5 5 5 5 5 5 5 5 5 5 5 d . . . 
+            d 5 5 5 5 5 5 5 5 5 5 5 d d . . 
+            . d d d 5 5 5 5 5 d d d d d . . 
+            . d 5 d d d d d d 5 d d d d . . 
+            . d 5 d 5 5 5 d 5 5 d 5 d . . . 
+            . d 5 d 5 5 5 d 5 5 d 5 d . . . 
+            . d 5 d d 5 5 d 5 d 5 5 d . . . 
+            . d 5 5 d 5 5 d 5 d 5 5 d . . . 
+            . . d 5 d 5 d d 5 d 5 d . . . . 
+            . . d 5 d 5 d 5 5 d 5 d . . . . 
+            . . d 5 d 5 d 5 5 d 5 d . . . . 
+            . . d 5 d 5 d 5 5 d 5 d . . . . 
+            . . . d d d d d d d d . . . . . 
+            `, false)
+    }
+    for (let value of scene.getTilesByType(2)) {
+        scene.setTile(2, img`
+            e e e b b b b e e e e e e e e e 
+            e e e b b b b b b b b e e e e e 
+            b e e e e e e e e b b b b b b b 
+            e b b b b b b b e e e b b e e e 
+            e e e e e e e e e b e e e e e e 
+            e e e e e e e e e e b b b b b b 
+            e e e e e b e e e e e e e e e e 
+            e e e e e b b b b e e e e e e e 
+            e e e e e e e e e b b e e e e e 
+            e e e e e e e e e e e e b b b b 
+            e b b e e e e e e e e e e e e e 
+            e e b b e e e e e e e e e e e e 
+            e e e b b b b e e e e e e e e e 
+            e e e e e e e b b b b b e e e b 
+            e e e e e e e e e e e e e e e e 
+            e e e e e e e e e e e e e e e e 
+            `, true)
+    }
+    for (let value of scene.getTilesByType(5)) {
+        scene.setTile(5, img`
+            e f b e e b f e b e e b e e f b 
+            e f b e e b f e b e b b e f e b 
+            e f b e b b f e e b b e e f b e 
+            e e f e b e f e e b b e f e b e 
+            e e f e b e f e e b e e f e b e 
+            e e f e b e f e e b e f f e b f 
+            e e f e b e f e b b e f e e b f 
+            e e f b e e f e b e b f e e b f 
+            e e f b e e f b b e b f e e b f 
+            e e f b e e f b e e f b e e b f 
+            e e f b e e f b e e f b e e f e 
+            e e f b e e f b e e f b e e f e 
+            e b f b b e f e e f f e b e f e 
+            e b f e b f b e e f e e b e f e 
+            b b f e b f b e e f e e b f b e 
+            b e f e e f b e e f e e b f b e 
+            `, true)
+    }
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite.setVelocity(0, -300)
+    mySprite.setVelocity(0, -450)
     pause(200)
-    mySprite.setVelocity(0, 200)
+    mySprite.setVelocity(0, 400)
 })
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile11, function (sprite, location) {
-    music.playMelody("C D E F G B G - ", 350)
-    music.playMelody("C D E F G C5 A - ", 350)
-    music.playMelody("C D E F G C5 C5 C5 ", 350)
-    game.over(true)
-})
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile6, function (sprite, location) {
-    music.pewPew.playUntilDone()
-    music.pewPew.playUntilDone()
-    music.pewPew.playUntilDone()
-    game.over(false)
-})
-let speed = 0
+function llleeevvveeelll () {
+	
+}
+function lleevveell () {
+	
+}
 let mySprite: Sprite = null
 mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
-    . . . . 2 2 2 2 2 2 2 2 . . . . 
-    . . . 2 2 2 2 2 2 2 2 2 2 . . . 
-    . . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
-    . . . e e e e d d f d d d . . . 
-    . . . e d d d e d d d d d d d d 
-    . . . d d d d d e e e e e d d d 
-    . . . . d d d d d 2 2 2 2 . . . 
-    . d d d 8 2 2 2 2 2 2 8 8 d d . 
-    1 d d 8 8 2 2 2 2 2 2 8 8 . d 1 
-    1 1 . 8 8 2 2 2 2 2 2 8 8 . 1 1 
-    . . 8 8 5 8 8 8 8 8 8 5 8 . . . 
-    . . 8 8 8 8 8 8 8 8 8 8 8 . . . 
-    . . . 8 8 . . . . . . 8 8 . . . 
-    . . . f f f . . . . . f f f . . 
-    . . . f f f f . . . . f f f f . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . f f . . f f . . . . . f f . . 
+    . . . f . . . f . . . f . . . . 
+    . e e e e e e e e e f e e . . . 
+    e e e e e e e e e f f e e f e . 
+    f f f f f f f f f e f e e e e . 
+    e e e e e e e e e f f e e f e . 
+    . e e e e e e e e e f e e . . . 
+    . . . f . . . f . . . f . . . . 
+    . f f . . f f . . . . . f f . . 
     `, SpriteKind.Player)
-mySprite.setPosition(9, 101)
-tiles.setTilemap(tiles.createTilemap(hex`100010000909090909090909090909090909090908080808080808080808080808080808080808080808080808080808080808080808080808080808080808080808080808080808080808080808080808080808080808070808080808080808080708080808080808080808080808020808080808080808080808080803020808080808080807050708080804020808070507080808080808080808020808080808080808080808080808080808080808080808080808080402080208080808080808080808080802020402020808080808080b0a0a0a02020203020202060a040403020101010101010101010101010101010101010101010101010101010101010101`, img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . 2 . . . . . . . . . 2 . . 
-    . . . . . . . . . . . 2 . . . . 
-    . . . . . . . . . . 2 . . . . . 
-    . . 2 2 2 . . . . 2 . . 2 2 2 . 
-    . . . . . . . . 2 . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . 2 . 2 . . . . . . . . 
-    . . . . 2 2 . 2 2 . . . . . . . 
-    . . . 2 2 2 . 2 2 2 . . . . . 2 
-    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
-    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
-    `, [myTiles.transparency16,myTiles.tile1,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9,myTiles.tile10,myTiles.tile11], TileScale.Sixteen))
+level()
 controller.moveSprite(mySprite, 100, 0)
+scene.setBackgroundColor(9)
+mySprite.setPosition(18, 91)
 scene.cameraFollowSprite(mySprite)
-mySprite.setVelocity(0, 200)
+let tile_list = 0
 forever(function () {
-    if (controller.A.isPressed() == false) {
-        mySprite.setVelocity(0, 200)
+    if (controller.A.isPressed()) {
+        mySprite.setVelocity(0, 350)
     }
-})
-forever(function () {
-    music.playMelody("C5 C5 C5 A B C5 D A ", 150)
-    music.playMelody("G F E D E F B G ", 150)
-    music.playMelody("C5 G B F D C5 E B ", 150)
-    music.playMelody("D C F D D C5 C5 E ", 150)
-    music.playMelody("C C5 C5 B A G F E ", 150)
-    music.playMelody("D C C5 B A G G C5 ", 150)
-})
-game.onUpdateInterval(100, function () {
-    speed += 10
 })
